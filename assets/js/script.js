@@ -67,4 +67,63 @@ function trovaProdottiCostosi(ordini, prezzoMinimo) {
 
 console.log(trovaProdottiCostosi(ordini, 100));
 
-// Catalogo prodotti:
+// Catalogo prodotti: crea 4 funzioni indipendenti con un scopo preciso 
+
+const prodotti = [
+    { nome: "Iphone", prezzo: 899, categoria: "Elettronica", disponibile: true, rating: 5 },
+    { nome: "Mouse", prezzo: 25, categoria: "Elettronica", disponibile: true, rating: 3 },
+    { nome: "Maglietta", prezzo: 20, categoria: "Abbigliamento", disponibile: false, rating: 4 },
+    { nome: "Jeans", prezzo: 65, categoria: "Abbigliamento", disponibile: true, rating: 5 },
+    { nome: "Monitor", prezzo: 220, categoria: "Elettronica", disponibile: true, rating: 4 },
+    { nome: "Felpa", prezzo: 45, categoria: "Abbigliamento", disponibile: true, rating: 2 },
+];
+
+function filtraCategoria(prodotti, categoria) {
+    const scelti = [];
+
+    for (let i = 0; i < prodotti.length; i++) {
+        if (prodotti[i].categoria === categoria) {
+            scelti.push(prodotti[i]);
+        }
+    }
+    return scelti;
+}
+console.log(filtraCategoria(prodotti, "Elettronica"));
+
+function prodottiMigliori(prodotti) {
+    const migliori = [];
+
+    for (let i = 0; i < prodotti.length; i++) {
+        if (prodotti[i].disponibile === true && prodotti[i].rating >= 4) {
+            migliori.push(prodotti[i]);
+        }
+    }
+    return migliori;
+}
+
+console.log(prodottiMigliori(prodotti));
+
+function mediaProdotti (prodotti){
+
+    let media = 0;
+
+     for (let i = 0; i < prodotti.length; i++) { 
+          media += prodotti[i].prezzo / prodotti.length;
+     }
+     return media;
+}
+console.log(mediaProdotti(prodotti));
+
+function trovaPiuCostoso (prodotti){
+      let piuCostoso = prodotti[0];
+
+    for (let i = 0; i < prodotti.length; i++) {
+
+        if (prodotti[i].prezzo > piuCostoso.prezzo) {
+              piuCostoso = prodotti[i];
+        }
+    }
+    return piuCostoso;
+}
+
+console.log(trovaPiuCostoso(prodotti));
